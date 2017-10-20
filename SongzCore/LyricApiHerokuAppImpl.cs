@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
-using System.Net.Http;
 using JsonUtils;
 
 namespace SongzCore
@@ -10,46 +11,52 @@ namespace SongzCore
     {
 
         const string LyricApiBaseUri = "lyric-api.herokuapp.com/api/find";
+        const string WordRegex = @"\b(?:[a-z]{2,}|[ai])\b";
 
-        public string[] GetLyrics(string artist, string track)
+        public HashSet<string> GetWordSet(string artist, string track)
         {
-            string[] lyrics = null;
+            HashSet<string> wordSet = new HashSet<string>();
 
-            var response = MakeRequest(artist, track);
+            // make the request
+            dynamic response = MakeRequest(artist, track);
             string responseLyrics = response.lyric;
 
-            return lyrics;
+            // extract the words from the response
+            char[] punctuation = responseLyrics.Where(char.IsPunctuation).Distinct().ToArray();
+            IEnumerable<string> words = responseLyrics.Split().Select(x => x.Trim(punctuation));
+
+            // add each word in the set
+            foreach (string word in words)
+            {
+                if (!string.IsNullOrEmpty(word))
+                    wordSet.Add(word.Trim().ToLower());
+            }
+
+            return wordSet;
         }
 
         dynamic MakeRequest(string artist, string track)
         {
-            string url = string.Format("{0}/{1}/{2}", LyricApiBaseUri, artist, track);
-			try
-			{
-				HttpWebRequest request = HttpWebRequest.CreateHttp(url);
-				WebResponse response = request.GetResponse();
-				string reply;
-				using (var reader = new StreamReader(response.GetResponseStream()))
-				{
-					reply = reader.ReadToEnd();
-					if (string.IsNullOrEmpty(reply))
-						return null;
-				}
-                return JsonObject.GetDynamicJsonObject(reply);
-			}
-            catch (WebException we)
-			{
-                string format = "WebException encountered. status => {0} message => {1} stackTrack => {2}";
-                string weMessage = string.Format(format, we.Status.ToString(), we.Message, we.StackTrace);
-				Console.WriteLine(weMessage);
-				throw we;
-			}
-            catch (Exception e)
+            string url = string.Format("http://{0}/{1}/{2}", LyricApiBaseUri, artist, track);
+            try
             {
-                string format = "Unknown exception encountered. message => {0} stackTrack => {1}";
-                string eMessage = string.Format(format, e.Message, e.StackTrace);
-                Console.WriteLine(eMessage);
-                throw e;
+                HttpWebRequest request = WebRequest.CreateHttp(url);
+                WebResponse response = request.GetResponse();
+                string reply;
+                using (var reader = new StreamReader(response.GetResponseStream()))
+                {
+                    reply = reader.ReadToEnd();
+                    if (string.IsNullOrEmpty(reply))
+                        return null;
+                }
+                return JsonObject.GetDynamicJsonObject(reply);
+            }
+            catch (WebException we)
+            {
+                string format = "WebException encountered. status => {0} message => {1} stackTrack => {2}";
+                string message = string.Format(format, we.Status.ToString(), we.Message, we.StackTrace);
+                Console.WriteLine(message);
+                throw we;
             }
         }
     }
