@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SongzApi", "SongzApi\SongzA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SongzCore", "SongzCore\SongzCore.csproj", "{FA08FDD8-7B27-467A-9B9F-FD76DC3B9743}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SongzCoreTest", "SongzCoreTest\SongzCoreTest.csproj", "{C0FD6ACC-A56A-41AD-9D64-82AD47A9F871}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +21,9 @@ Global
 		{FA08FDD8-7B27-467A-9B9F-FD76DC3B9743}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA08FDD8-7B27-467A-9B9F-FD76DC3B9743}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA08FDD8-7B27-467A-9B9F-FD76DC3B9743}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0FD6ACC-A56A-41AD-9D64-82AD47A9F871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0FD6ACC-A56A-41AD-9D64-82AD47A9F871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0FD6ACC-A56A-41AD-9D64-82AD47A9F871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0FD6ACC-A56A-41AD-9D64-82AD47A9F871}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
