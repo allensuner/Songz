@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SongzApi", "SongzApi\SongzApi.csproj", "{47F07AED-1BCC-4548-82B2-57BC3BF0DE18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SongzCore", "SongzCore\SongzCore.csproj", "{FA08FDD8-7B27-467A-9B9F-FD76DC3B9743}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{47F07AED-1BCC-4548-82B2-57BC3BF0DE18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47F07AED-1BCC-4548-82B2-57BC3BF0DE18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47F07AED-1BCC-4548-82B2-57BC3BF0DE18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47F07AED-1BCC-4548-82B2-57BC3BF0DE18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA08FDD8-7B27-467A-9B9F-FD76DC3B9743}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA08FDD8-7B27-467A-9B9F-FD76DC3B9743}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA08FDD8-7B27-467A-9B9F-FD76DC3B9743}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA08FDD8-7B27-467A-9B9F-FD76DC3B9743}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
