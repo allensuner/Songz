@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace SongzApi.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class ValidateController : Controller
     {
         // GET api/values
         [HttpGet]
